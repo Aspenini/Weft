@@ -7,7 +7,7 @@
 
 Everything you need to write, compile, and publish Weft pages. <muted>
 
-[Back to Home](homepage.html) <button>
+[Back to Home](index.html) <button>
 [Formal Specification](specification.html) <button>
 
 ---
@@ -93,7 +93,7 @@ Blank lines create visual gaps.
 Use button style on a line:
 
 ```weft
-[Get Started](homepage.html) <button>
+[Get Started](index.html) <button>
 ```
 
 ### Images
@@ -307,5 +307,5 @@ it does not belong in Weft.
 
 ---
 
-[Back to Home](homepage.html) <button>
+[Back to Home](index.html) <button>
 [Formal Specification](specification.html) <button>

@@ -7,7 +7,7 @@
 
 Foundational reference for parser, compiler, playground, and site generator implementations. <muted>
 
-[Home](homepage.html) <button>
+[Home](index.html) <button>
 [Documentation](documentation.html) <button>
 
 ---
@@ -266,5 +266,5 @@ A compiler.
 A playground.
 A static site generator.
 
-[Home](homepage.html) <button>
+[Home](index.html) <button>
 [Documentation](documentation.html) <button>
