@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weft Documentation</title>
+<meta name="description" content="Complete guide to writing Weft pages and understanding compiler behavior">
+<style>:root{
+  --w-bg:#f0f4fb;
+  --w-text:#111827;
+  --w-muted:#5b6473;
+  --w-panel:#ffffff;
+  --w-line:#d8e0ef;
+  --w-accent:#0b7b88;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  padding:40px min(4vw,40px);
+  font:16px/1.65 "Avenir Next","Segoe UI",sans-serif;
+  color:var(--w-text);
+  background:
+    radial-gradient(900px 400px at 95% -10%, color-mix(in srgb, var(--w-accent), white 82%) 0%, transparent 55%),
+    var(--w-bg);
+}
+main{max-width:1100px;margin:0 auto}
+h1,h2,h3,h4{line-height:1.2;margin:0.6em 0 0.45em}
+h1{font-size:clamp(1.9rem,5vw,3.2rem)}
+h2{font-size:clamp(1.5rem,3vw,2.2rem)}
+h3{font-size:1.3rem}
+h4{font-size:1.1rem}
+p{margin:0.65em 0}
+a{color:var(--w-accent)}
+hr{border:0;border-top:1px solid var(--w-line);margin:1.2rem 0}
+pre{margin:0.9rem 0;padding:12px 14px;overflow:auto;border:1px solid var(--w-line);border-radius:12px;background:color-mix(in srgb,var(--w-line),white 50%)}
+figure{margin:0.9rem 0}
+img{max-width:100%;height:auto;display:block;border-radius:12px}
+code{font-family:"Cascadia Code","Consolas",monospace;background:color-mix(in srgb,var(--w-line),white 35%);padding:0.1rem 0.35rem;border-radius:6px}
+pre code{display:block;padding:0;border-radius:0;background:transparent;white-space:pre}
+.w-gap{height:0.8rem}
+.w-card-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:0.8rem 0}
+.w-card{background:var(--w-panel);border:1px solid var(--w-line);border-radius:16px;padding:14px 15px;box-shadow:0 8px 20px rgba(0,0,0,0.08)}
+.center{text-align:center}
+.glow{
+  color:color-mix(in srgb,var(--w-accent),white 16%);
+  text-shadow:
+    0 0 8px color-mix(in srgb,var(--w-accent),white 35%),
+    0 0 20px color-mix(in srgb,var(--w-accent),transparent 6%),
+    0 0 42px color-mix(in srgb,var(--w-accent),transparent 20%),
+    0 0 78px color-mix(in srgb,var(--w-accent),transparent 42%);
+  animation:w-glow-pulse 1800ms ease-in-out infinite alternate;
+}
+@keyframes w-glow-pulse{
+from{
+text-shadow:
+0 0 7px color-mix(in srgb,var(--w-accent),white 30%),
+0 0 18px color-mix(in srgb,var(--w-accent),transparent 12%),
+0 0 36px color-mix(in srgb,var(--w-accent),transparent 28%),
+0 0 60px color-mix(in srgb,var(--w-accent),transparent 48%);
+}
+to{
+text-shadow:
+0 0 10px color-mix(in srgb,var(--w-accent),white 44%),
+0 0 26px color-mix(in srgb,var(--w-accent),transparent 4%),
+0 0 58px color-mix(in srgb,var(--w-accent),transparent 16%),
+0 0 96px color-mix(in srgb,var(--w-accent),transparent 36%);
+}
+}
+.muted{color:var(--w-muted)}
+.bold{font-weight:700}
+.round img,img.round{border-radius:20px}
+.button a,a.button{display:inline-block;background:var(--w-accent);color:#fff!important;text-decoration:none;padding:0.48rem 0.82rem;border-radius:999px;font-weight:600}
+.fade{opacity:0;transform:translateY(16px)}
+.spin{display:inline-block}</style>
+</head>
+<body>
+<main><h1 class="glow">Weft Documentation</h1><div class="w-gap" aria-hidden="true"></div><p class="muted">Everything you need to write, compile, and publish Weft pages.</p><div class="w-gap" aria-hidden="true"></div><p class="button"><a href="homepage.html" target="_blank" rel="noreferrer noopener">Back to Home</a></p><p class="button"><a href="specification.html" target="_blank" rel="noreferrer noopener">Formal Specification</a></p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>What Is Weft</h2><div class="w-gap" aria-hidden="true"></div><p>Weft is a single-file declarative markup language for complete web pages.</p><div class="w-gap" aria-hidden="true"></div><p>Core goals:</p><p>One file equals one page.</p><p>Readable as plain text.</p><p>Looks good by default.</p><p>No config files.</p><p>No separate CSS or JS files.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>Mental Model</h2><div class="w-gap" aria-hidden="true"></div><p>Think of Weft as Markdown plus visual stickers.</p><p>You write content.</p><p>You add intent with tags.</p><p>The compiler handles presentation details.</p><div class="w-gap" aria-hidden="true"></div><p>Weft is descriptive, not programmable.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>File Rules</h2><div class="w-gap" aria-hidden="true"></div><p>A Weft file is UTF-8 plain text.</p><p>Use the .weft extension.</p><p>Each file is exactly one page.</p><div class="w-gap" aria-hidden="true"></div><p>No imports.</p><p>No includes.</p><p>No dependencies.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>Metadata</h2><div class="w-gap" aria-hidden="true"></div><p>Metadata must appear before content lines.</p><p>Unknown metadata keys are ignored for forward compatibility.</p><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft">@title My Page
+@desc Short description for SEO
+@theme default
+@accent blue</code></pre><div class="w-gap" aria-hidden="true"></div><p>Common keys:</p><p>@title sets HTML title.</p><p>@desc sets meta description.</p><p>@theme chooses base palette.</p><p>@accent overrides accent color.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>Markdown Core</h2><div class="w-gap" aria-hidden="true"></div><h3>Headings</h3><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft"># H1
+## H2
+### H3
+#### H4</code></pre><div class="w-gap" aria-hidden="true"></div><h3>Paragraphs</h3><div class="w-gap" aria-hidden="true"></div><p>Plain text lines render as paragraphs.</p><p>Blank lines create visual gaps.</p><div class="w-gap" aria-hidden="true"></div><h3>Links</h3><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft">[Text](https://example.com)</code></pre><div class="w-gap" aria-hidden="true"></div><p>Use button style on a line:</p><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft">[Get Started](homepage.html) &lt;button&gt;</code></pre><div class="w-gap" aria-hidden="true"></div><h3>Images</h3><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft">![Alt text](image.png)
+![Rounded](shot.png) &lt;round&gt;</code></pre><div class="w-gap" aria-hidden="true"></div><h3>Horizontal Rule</h3><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft">---</code></pre><div class="w-gap" aria-hidden="true"></div><h3>Inline Formatting</h3><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft">**bold**
+`code`</code></pre><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>Code Spans And Fenced Blocks</h2><div class="w-gap" aria-hidden="true"></div><p>Inline code with backticks is literal and does not evaluate Weft tags.</p><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft">Use `&lt;glow&gt;literal&lt;/glow&gt;` to show raw tags.</code></pre><div class="w-gap" aria-hidden="true"></div><p>Fenced blocks with triple backticks are literal and can include an optional language label.</p><p>Everything inside is rendered as code, including Weft syntax.</p><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft"># Not A Heading Here &lt;glow&gt;
+This &lt;red&gt;stays literal&lt;/red&gt;</code></pre><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>Tags</h2><div class="w-gap" aria-hidden="true"></div><p>There are two tag forms:</p><p>Line tags at the end of a line.</p><p>Inline tags around a phrase.</p><div class="w-gap" aria-hidden="true"></div><h3>Line Tags</h3><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft"># Welcome &lt;center&gt; &lt;glow&gt;
+This line is muted &lt;muted&gt;</code></pre><div class="w-gap" aria-hidden="true"></div><p>Rules:</p><p>No closing tag required.</p><p>Multiple tags allowed.</p><p>Order does not matter.</p><p>Only tags at line end apply as line tags.</p><div class="w-gap" aria-hidden="true"></div><h3>Inline Tags</h3><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft">This &lt;glow&gt;word&lt;/glow&gt; glows.</code></pre><div class="w-gap" aria-hidden="true"></div><p>Rules:</p><p>Inline tags must close.</p><p>Inline tags can nest.</p><p>Inline tags override line tags.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>Card Blocks</h2><div class="w-gap" aria-hidden="true"></div><p>Cards are the only layout primitive.</p><p>Adjacent cards flow into responsive rows.</p><p>Narrow screens stack cards.</p><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft">:::
+## Card Title
+Card content.
+:::
+
+:::
+## Second Card
+Auto-flows beside the first on wide screens.
+:::</code></pre><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>Colors</h2><div class="w-gap" aria-hidden="true"></div><p>Named colors:</p><p>blue red green yellow purple cyan orange pink white black gray grey</p><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft">This line is blue &lt;blue&gt;
+This &lt;red&gt;word&lt;/red&gt; is red</code></pre><div class="w-gap" aria-hidden="true"></div><p>Hex colors:</p><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft">This line is pink &lt;#ff66cc&gt;
+This &lt;#00ff88&gt;word&lt;/#00ff88&gt; is custom color</code></pre><div class="w-gap" aria-hidden="true"></div><p>Rules:</p><p>#rgb and #rrggbb are supported.</p><p>If multiple color tags apply, last color wins.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>Built-in Tags</h2><div class="w-gap" aria-hidden="true"></div><p>Style tags:</p><p>center glow muted bold round</p><div class="w-gap" aria-hidden="true"></div><p>UI tags:</p><p>button</p><div class="w-gap" aria-hidden="true"></div><p>Motion tags:</p><p>spin fade</p><div class="w-gap" aria-hidden="true"></div><p>Motion rules:</p><p>JS is injected only if motion tags are used.</p><p>Motion respects prefers-reduced-motion.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>Whitespace Rules</h2><div class="w-gap" aria-hidden="true"></div><p>Blank lines collapse to a single visual gap.</p><p>Indentation is ignored.</p><p>Tabs and spaces are treated equivalently.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>Error Handling</h2><div class="w-gap" aria-hidden="true"></div><p>Weft is forgiving.</p><p>Unknown tags render as literal text.</p><p>Unclosed inline tags render literally.</p><p>Author mistakes should not fail the build.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>Compilation Model</h2><div class="w-gap" aria-hidden="true"></div><p>Deterministic pipeline:</p><p>Tokenize lines.</p><p>Parse structure.</p><p>Apply tags.</p><p>Emit HTML.</p><p>Inject CSS.</p><p>Inject JS only when needed.</p><div class="w-gap" aria-hidden="true"></div><p>Output:</p><p>Single HTML file.</p><p>Inline style tag.</p><p>Optional inline script.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>What Weft Will Never Do</h2><div class="w-gap" aria-hidden="true"></div><p>No custom CSS.</p><p>No custom JS.</p><p>No logic or variables.</p><p>No layout configuration language.</p><p>No multiple files per page.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>Canonical Example</h2><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft"># Weft &lt;center&gt; &lt;glow&gt;
+
+One file. Looks good. Works everywhere. &lt;muted&gt;
+
+---
+
+:::
+## Simple &lt;blue&gt;
+No HTML.
+No CSS.
+No JS files.
+:::
+
+---
+
+This line spins &lt;spin&gt;
+This &lt;#ff66cc&gt;word&lt;/#ff66cc&gt; glows
+
+[Get Started](documentation.html) &lt;button&gt;</code></pre><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>Design Boundary</h2><div class="w-gap" aria-hidden="true"></div><p>If a feature makes Weft harder than Markdown,</p><p>requires heavy syntax memorization,</p><p>or introduces configuration or programming,</p><p>it does not belong in Weft.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><p class="button"><a href="homepage.html" target="_blank" rel="noreferrer noopener">Back to Home</a></p><p class="button"><a href="specification.html" target="_blank" rel="noreferrer noopener">Formal Specification</a></p><div class="w-gap" aria-hidden="true"></div></main>
+
+</body>
+</html>

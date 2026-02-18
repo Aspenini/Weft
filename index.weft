@@ -1,0 +1,98 @@
+@title Weft
+@desc One-file markup language with polished defaults and a complete spec
+@theme default
+@accent blue
+
+# Weft <center> <glow>
+
+One file. Publish fast. Keep content readable. <center> <muted>
+
+[Read Documentation](documentation.html) <button>
+[Read Specification](specification.html) <button>
+
+---
+
+:::
+## Why Weft <blue>
+Write pages as plain text.
+Use tiny tags for style and motion.
+No HTML, CSS, or JS required in author files.
+:::
+
+:::
+## Reliable Output <green>
+Compilation is deterministic.
+Same source always produces the same HTML.
+Good for version control and static hosting.
+:::
+
+:::
+## Minimal Surface <purple>
+One .weft file equals one page.
+No imports.
+No config files.
+No layout DSL.
+:::
+
+---
+
+## Start In 60 Seconds
+
+```weft
+@title My First Weft Page
+@desc A complete page from one file
+@theme default
+@accent cyan
+
+# Hello Weft <center> <glow>
+
+This line is calm <muted>
+
+:::
+## Card One <blue>
+Cards are the only layout primitive.
+:::
+
+[Open Docs](documentation.html) <button>
+```
+
+---
+
+## Everything You Need
+
+:::
+## Practical Docs <orange>
+Step-by-step reference for syntax and rules.
+Includes code spans, fenced blocks, tags, cards, and colors.
+[Open Documentation](documentation.html) <button>
+:::
+
+:::
+## Formal Spec <cyan>
+Numbered reference with guarantees, boundaries, and compiler model.
+Useful for implementers and tooling.
+[Open Specification](specification.html) <button>
+:::
+
+:::
+## Playground <pink>
+Live editor and preview for trying examples fast.
+Great for testing syntax while writing docs or pages.
+[Open Playground](playground.html) <button>
+:::
+
+---
+
+## Language Boundaries <center>
+
+No custom CSS.
+No custom JS.
+No logic or variables.
+No multi-file page composition.
+
+If you need those, use HTML directly.
+
+---
+
+[Documentation](documentation.html) <button>
+[Specification](specification.html) <button>

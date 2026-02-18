@@ -1,0 +1,311 @@
+@title Weft Documentation
+@desc Complete guide to writing Weft pages and understanding compiler behavior
+@theme slate
+@accent cyan
+
+# Weft Documentation <glow>
+
+Everything you need to write, compile, and publish Weft pages. <muted>
+
+[Back to Home](homepage.html) <button>
+[Formal Specification](specification.html) <button>
+
+---
+
+## What Is Weft
+
+Weft is a single-file declarative markup language for complete web pages.
+
+Core goals:
+One file equals one page.
+Readable as plain text.
+Looks good by default.
+No config files.
+No separate CSS or JS files.
+
+---
+
+## Mental Model
+
+Think of Weft as Markdown plus visual stickers.
+You write content.
+You add intent with tags.
+The compiler handles presentation details.
+
+Weft is descriptive, not programmable.
+
+---
+
+## File Rules
+
+A Weft file is UTF-8 plain text.
+Use the .weft extension.
+Each file is exactly one page.
+
+No imports.
+No includes.
+No dependencies.
+
+---
+
+## Metadata
+
+Metadata must appear before content lines.
+Unknown metadata keys are ignored for forward compatibility.
+
+```weft
+@title My Page
+@desc Short description for SEO
+@theme default
+@accent blue
+```
+
+Common keys:
+@title sets HTML title.
+@desc sets meta description.
+@theme chooses base palette.
+@accent overrides accent color.
+
+---
+
+## Markdown Core
+
+### Headings
+
+```weft
+# H1
+## H2
+### H3
+#### H4
+```
+
+### Paragraphs
+
+Plain text lines render as paragraphs.
+Blank lines create visual gaps.
+
+### Links
+
+```weft
+[Text](https://example.com)
+```
+
+Use button style on a line:
+
+```weft
+[Get Started](homepage.html) <button>
+```
+
+### Images
+
+```weft
+![Alt text](image.png)
+![Rounded](shot.png) <round>
+```
+
+### Horizontal Rule
+
+```weft
+---
+```
+
+### Inline Formatting
+
+```weft
+**bold**
+`code`
+```
+
+---
+
+## Code Spans And Fenced Blocks
+
+Inline code with backticks is literal and does not evaluate Weft tags.
+
+```weft
+Use `<glow>literal</glow>` to show raw tags.
+```
+
+Fenced blocks with triple backticks are literal and can include an optional language label.
+Everything inside is rendered as code, including Weft syntax.
+
+```weft
+# Not A Heading Here <glow>
+This <red>stays literal</red>
+```
+
+---
+
+## Tags
+
+There are two tag forms:
+Line tags at the end of a line.
+Inline tags around a phrase.
+
+### Line Tags
+
+```weft
+# Welcome <center> <glow>
+This line is muted <muted>
+```
+
+Rules:
+No closing tag required.
+Multiple tags allowed.
+Order does not matter.
+Only tags at line end apply as line tags.
+
+### Inline Tags
+
+```weft
+This <glow>word</glow> glows.
+```
+
+Rules:
+Inline tags must close.
+Inline tags can nest.
+Inline tags override line tags.
+
+---
+
+## Card Blocks
+
+Cards are the only layout primitive.
+Adjacent cards flow into responsive rows.
+Narrow screens stack cards.
+
+```weft
+:::
+## Card Title
+Card content.
+:::
+
+:::
+## Second Card
+Auto-flows beside the first on wide screens.
+:::
+```
+
+---
+
+## Colors
+
+Named colors:
+blue red green yellow purple cyan orange pink white black gray grey
+
+```weft
+This line is blue <blue>
+This <red>word</red> is red
+```
+
+Hex colors:
+
+```weft
+This line is pink <#ff66cc>
+This <#00ff88>word</#00ff88> is custom color
+```
+
+Rules:
+#rgb and #rrggbb are supported.
+If multiple color tags apply, last color wins.
+
+---
+
+## Built-in Tags
+
+Style tags:
+center glow muted bold round
+
+UI tags:
+button
+
+Motion tags:
+spin fade
+
+Motion rules:
+JS is injected only if motion tags are used.
+Motion respects prefers-reduced-motion.
+
+---
+
+## Whitespace Rules
+
+Blank lines collapse to a single visual gap.
+Indentation is ignored.
+Tabs and spaces are treated equivalently.
+
+---
+
+## Error Handling
+
+Weft is forgiving.
+Unknown tags render as literal text.
+Unclosed inline tags render literally.
+Author mistakes should not fail the build.
+
+---
+
+## Compilation Model
+
+Deterministic pipeline:
+Tokenize lines.
+Parse structure.
+Apply tags.
+Emit HTML.
+Inject CSS.
+Inject JS only when needed.
+
+Output:
+Single HTML file.
+Inline style tag.
+Optional inline script.
+
+---
+
+## What Weft Will Never Do
+
+No custom CSS.
+No custom JS.
+No logic or variables.
+No layout configuration language.
+No multiple files per page.
+
+---
+
+## Canonical Example
+
+```weft
+# Weft <center> <glow>
+
+One file. Looks good. Works everywhere. <muted>
+
+---
+
+:::
+## Simple <blue>
+No HTML.
+No CSS.
+No JS files.
+:::
+
+---
+
+This line spins <spin>
+This <#ff66cc>word</#ff66cc> glows
+
+[Get Started](documentation.html) <button>
+```
+
+---
+
+## Design Boundary
+
+If a feature makes Weft harder than Markdown,
+requires heavy syntax memorization,
+or introduces configuration or programming,
+it does not belong in Weft.
+
+---
+
+[Back to Home](homepage.html) <button>
+[Formal Specification](specification.html) <button>

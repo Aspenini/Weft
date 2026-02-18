@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weft Specification v0.1</title>
+<meta name="description" content="Formal reference specification for Weft Markup Language v0.1">
+<style>:root{
+  --w-bg:#151922;
+  --w-text:#eef2ff;
+  --w-muted:#acb8d6;
+  --w-panel:#1d2330;
+  --w-line:#2a3345;
+  --w-accent:#0b7b88;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  padding:40px min(4vw,40px);
+  font:16px/1.65 "Avenir Next","Segoe UI",sans-serif;
+  color:var(--w-text);
+  background:
+    radial-gradient(900px 400px at 95% -10%, color-mix(in srgb, var(--w-accent), white 82%) 0%, transparent 55%),
+    var(--w-bg);
+}
+main{max-width:1100px;margin:0 auto}
+h1,h2,h3,h4{line-height:1.2;margin:0.6em 0 0.45em}
+h1{font-size:clamp(1.9rem,5vw,3.2rem)}
+h2{font-size:clamp(1.5rem,3vw,2.2rem)}
+h3{font-size:1.3rem}
+h4{font-size:1.1rem}
+p{margin:0.65em 0}
+a{color:var(--w-accent)}
+hr{border:0;border-top:1px solid var(--w-line);margin:1.2rem 0}
+pre{margin:0.9rem 0;padding:12px 14px;overflow:auto;border:1px solid var(--w-line);border-radius:12px;background:color-mix(in srgb,var(--w-line),white 50%)}
+figure{margin:0.9rem 0}
+img{max-width:100%;height:auto;display:block;border-radius:12px}
+code{font-family:"Cascadia Code","Consolas",monospace;background:color-mix(in srgb,var(--w-line),white 35%);padding:0.1rem 0.35rem;border-radius:6px}
+pre code{display:block;padding:0;border-radius:0;background:transparent;white-space:pre}
+.w-gap{height:0.8rem}
+.w-card-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:0.8rem 0}
+.w-card{background:var(--w-panel);border:1px solid var(--w-line);border-radius:16px;padding:14px 15px;box-shadow:0 8px 20px rgba(0,0,0,0.08)}
+.center{text-align:center}
+.glow{
+  color:color-mix(in srgb,var(--w-accent),white 16%);
+  text-shadow:
+    0 0 8px color-mix(in srgb,var(--w-accent),white 35%),
+    0 0 20px color-mix(in srgb,var(--w-accent),transparent 6%),
+    0 0 42px color-mix(in srgb,var(--w-accent),transparent 20%),
+    0 0 78px color-mix(in srgb,var(--w-accent),transparent 42%);
+  animation:w-glow-pulse 1800ms ease-in-out infinite alternate;
+}
+@keyframes w-glow-pulse{
+from{
+text-shadow:
+0 0 7px color-mix(in srgb,var(--w-accent),white 30%),
+0 0 18px color-mix(in srgb,var(--w-accent),transparent 12%),
+0 0 36px color-mix(in srgb,var(--w-accent),transparent 28%),
+0 0 60px color-mix(in srgb,var(--w-accent),transparent 48%);
+}
+to{
+text-shadow:
+0 0 10px color-mix(in srgb,var(--w-accent),white 44%),
+0 0 26px color-mix(in srgb,var(--w-accent),transparent 4%),
+0 0 58px color-mix(in srgb,var(--w-accent),transparent 16%),
+0 0 96px color-mix(in srgb,var(--w-accent),transparent 36%);
+}
+}
+.muted{color:var(--w-muted)}
+.bold{font-weight:700}
+.round img,img.round{border-radius:20px}
+.button a,a.button{display:inline-block;background:var(--w-accent);color:#fff!important;text-decoration:none;padding:0.48rem 0.82rem;border-radius:999px;font-weight:600}
+.fade{opacity:0;transform:translateY(16px)}
+.spin{display:inline-block}</style>
+</head>
+<body>
+<main><h1 class="glow">Weft Markup Language Specification v0.1</h1><div class="w-gap" aria-hidden="true"></div><p class="muted">Foundational reference for parser, compiler, playground, and site generator implementations.</p><div class="w-gap" aria-hidden="true"></div><p class="button"><a href="homepage.html" target="_blank" rel="noreferrer noopener">Home</a></p><p class="button"><a href="documentation.html" target="_blank" rel="noreferrer noopener">Documentation</a></p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>1. Purpose And Philosophy</h2><div class="w-gap" aria-hidden="true"></div><p>Weft is a single-file declarative markup language for complete web pages.</p><p>It is designed for authors who should not need HTML, CSS, or JS knowledge.</p><div class="w-gap" aria-hidden="true"></div><p>Core goals:</p><p>One file equals one page.</p><p>Readable as plain text.</p><p>Good visual defaults.</p><p>No configuration files.</p><p>No separate CSS or JS files.</p><p>Optional JS injection only for motion effects.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>2. Mental Model</h2><div class="w-gap" aria-hidden="true"></div><p>Treat Weft as Markdown plus tags.</p><p>Content is written first.</p><p>Tags annotate visual intent.</p><p>The compiler chooses concrete layout and style details.</p><div class="w-gap" aria-hidden="true"></div><p>Weft is not programmable.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>3. File Structure</h2><div class="w-gap" aria-hidden="true"></div><p>A Weft source file:</p><p>Is UTF-8 text.</p><p>Uses extension .weft.</p><p>Represents exactly one web page.</p><div class="w-gap" aria-hidden="true"></div><p>There are no imports or includes.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>4. Metadata</h2><div class="w-gap" aria-hidden="true"></div><p>Metadata appears at the top of the file.</p><p>Each metadata line begins with @.</p><p>Metadata parsing ends when non-metadata content begins.</p><p>Unknown keys must be ignored.</p><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft">@title My Page Title
+@desc Short description for SEO
+@theme default
+@accent blue</code></pre><div class="w-gap" aria-hidden="true"></div><p>Expected output mapping:</p><p>@title maps to HTML title.</p><p>@desc maps to meta description.</p><p>@theme and @accent influence theme variables.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>5. Markdown Core</h2><div class="w-gap" aria-hidden="true"></div><p>Supported baseline subset:</p><p>Headings level 1 through 4.</p><p>Paragraphs.</p><p>Links in <a href="url" target="_blank" rel="noreferrer noopener">Text</a> form.</p><p>Images in !<a href="src" target="_blank" rel="noreferrer noopener">Alt</a> form.</p><p>Horizontal rule with ---.</p><p>Inline strong using <strong>bold</strong>.</p><p>Inline code using <code>code</code>.</p><p>Fenced code blocks using triple backticks.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>6. Tags</h2><div class="w-gap" aria-hidden="true"></div><p>There are two categories:</p><p>Line tags at end-of-line.</p><p>Inline tags with open and close markers.</p><div class="w-gap" aria-hidden="true"></div><p>Unknown tags are not interpreted.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>7. Line Tags</h2><div class="w-gap" aria-hidden="true"></div><p>Example:</p><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft"># Welcome &lt;center&gt; &lt;glow&gt;
+This line is muted &lt;muted&gt;</code></pre><div class="w-gap" aria-hidden="true"></div><p>Rules:</p><p>No closing marker is required.</p><p>Multiple line tags are allowed.</p><p>Tag order is not semantically significant.</p><p>Only end-of-line tags are interpreted as line tags.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>8. Inline Tags</h2><div class="w-gap" aria-hidden="true"></div><p>Example:</p><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft">This &lt;glow&gt;word&lt;/glow&gt; glows.</code></pre><div class="w-gap" aria-hidden="true"></div><p>Rules:</p><p>Inline tags must close.</p><p>Nested inline tags are allowed when properly nested.</p><p>Inline tags override line-tag effects within their span.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>9. Card Blocks</h2><div class="w-gap" aria-hidden="true"></div><p>Cards are the only layout primitive.</p><p>Cards are delimited by ::: lines.</p><p>Adjacent cards form responsive rows.</p><p>Narrow viewports stack cards.</p><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft">:::
+## Title
+Card content.
+:::</code></pre><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>10. Color System</h2><div class="w-gap" aria-hidden="true"></div><p>Named colors:</p><p>blue red green yellow purple cyan orange pink white black gray grey</p><div class="w-gap" aria-hidden="true"></div><p>Hex colors:</p><p>#rgb</p><p>#rrggbb</p><div class="w-gap" aria-hidden="true"></div><p>Color precedence:</p><p>If multiple color tags apply to one element, the last color wins.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>11. Tag Reference</h2><div class="w-gap" aria-hidden="true"></div><p>Style tags:</p><p>center</p><p>glow</p><p>muted</p><p>bold</p><p>round</p><div class="w-gap" aria-hidden="true"></div><p>UI tags:</p><p>button</p><div class="w-gap" aria-hidden="true"></div><p>Motion tags:</p><p>spin</p><p>fade</p><div class="w-gap" aria-hidden="true"></div><p>Motion rule:</p><p>Compiler injects JS only if motion tags are present.</p><p>Motion must respect prefers-reduced-motion.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>12. Whitespace Rules</h2><div class="w-gap" aria-hidden="true"></div><p>Blank lines collapse to one visual gap.</p><p>Indentation does not change structure.</p><p>Tabs and spaces are equivalent for parsing intent.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>13. Error Handling</h2><div class="w-gap" aria-hidden="true"></div><p>Compiler behavior is forgiving:</p><p>Unknown tags render as literal text.</p><p>Unclosed inline tags render literally.</p><p>Build should avoid hard failure on author mistakes.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>14. Compilation Model</h2><div class="w-gap" aria-hidden="true"></div><p>Deterministic pipeline:</p><p>Tokenize input lines.</p><p>Parse block structure.</p><p>Apply line and inline tags.</p><p>Emit HTML.</p><p>Inject CSS.</p><p>Inject JS only when required by motion tags.</p><div class="w-gap" aria-hidden="true"></div><p>Output contract:</p><p>Single HTML file.</p><p>Inline style.</p><p>Optional inline script.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>15. What Weft Will Never Do</h2><div class="w-gap" aria-hidden="true"></div><p>No custom CSS.</p><p>No custom JS.</p><p>No logic or variables.</p><p>No configurable layout DSL.</p><p>No multi-file page composition.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>16. Canonical Example</h2><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft"># Weft &lt;center&gt; &lt;glow&gt;
+
+One file. Looks good. Works everywhere. &lt;muted&gt;
+
+---
+
+:::
+## Simple &lt;blue&gt;
+No HTML.
+No CSS.
+No JS files.
+:::
+
+---
+
+This line spins &lt;spin&gt;
+This &lt;#ff66cc&gt;word&lt;/#ff66cc&gt; glows
+
+[Get Started](documentation.html) &lt;button&gt;</code></pre><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>17. Design Guarantee</h2><div class="w-gap" aria-hidden="true"></div><p>If a proposed feature:</p><p>Makes the language harder than Markdown,</p><p>requires memorizing heavy syntax,</p><p>or introduces configuration or programming,</p><p>it does not belong in Weft.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>End Of Specification</h2><div class="w-gap" aria-hidden="true"></div><p>This specification is sufficient to implement:</p><p>A parser.</p><p>A compiler.</p><p>A playground.</p><p>A static site generator.</p><div class="w-gap" aria-hidden="true"></div><p class="button"><a href="homepage.html" target="_blank" rel="noreferrer noopener">Home</a></p><p class="button"><a href="documentation.html" target="_blank" rel="noreferrer noopener">Documentation</a></p></main>
+
+</body>
+</html>
