@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weft Page</title>
+<meta name="description" content="Compiled from Weft">
+<style>:root{
+  --w-bg:#fff8ef;
+  --w-text:#1f232b;
+  --w-muted:#5d6675;
+  --w-panel:#ffffff;
+  --w-line:#e8dfce;
+  --w-accent:#1f78c8;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  padding:40px min(4vw,40px);
+  font:16px/1.65 "Avenir Next","Segoe UI",sans-serif;
+  color:var(--w-text);
+  background:
+    radial-gradient(900px 400px at 95% -10%, color-mix(in srgb, var(--w-accent), white 82%) 0%, transparent 55%),
+    var(--w-bg);
+}
+main{max-width:1100px;margin:0 auto}
+h1,h2,h3,h4{line-height:1.2;margin:0.6em 0 0.45em}
+h1{font-size:clamp(1.9rem,5vw,3.2rem)}
+h2{font-size:clamp(1.5rem,3vw,2.2rem)}
+h3{font-size:1.3rem}
+h4{font-size:1.1rem}
+p{margin:0.65em 0}
+a{color:var(--w-accent)}
+hr{border:0;border-top:1px solid var(--w-line);margin:1.2rem 0}
+pre{margin:0.9rem 0;padding:12px 14px;overflow:auto;border:1px solid var(--w-line);border-radius:12px;background:color-mix(in srgb,var(--w-line),white 50%)}
+figure{margin:0.9rem 0}
+img{max-width:100%;height:auto;display:block;border-radius:12px}
+code{font-family:"Cascadia Code","Consolas",monospace;background:color-mix(in srgb,var(--w-line),white 35%);padding:0.1rem 0.35rem;border-radius:6px}
+pre code{display:block;padding:0;border-radius:0;background:transparent;white-space:pre}
+.w-gap{height:0.8rem}
+.w-card-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:0.8rem 0}
+.w-card{background:var(--w-panel);border:1px solid var(--w-line);border-radius:16px;padding:14px 15px;box-shadow:0 8px 20px rgba(0,0,0,0.08)}
+.center{text-align:center}
+.glow{
+  color:color-mix(in srgb,var(--w-accent),white 16%);
+  text-shadow:
+    0 0 8px color-mix(in srgb,var(--w-accent),white 35%),
+    0 0 20px color-mix(in srgb,var(--w-accent),transparent 6%),
+    0 0 42px color-mix(in srgb,var(--w-accent),transparent 20%),
+    0 0 78px color-mix(in srgb,var(--w-accent),transparent 42%);
+  animation:w-glow-pulse 1800ms ease-in-out infinite alternate;
+}
+@keyframes w-glow-pulse{
+from{
+text-shadow:
+0 0 7px color-mix(in srgb,var(--w-accent),white 30%),
+0 0 18px color-mix(in srgb,var(--w-accent),transparent 12%),
+0 0 36px color-mix(in srgb,var(--w-accent),transparent 28%),
+0 0 60px color-mix(in srgb,var(--w-accent),transparent 48%);
+}
+to{
+text-shadow:
+0 0 10px color-mix(in srgb,var(--w-accent),white 44%),
+0 0 26px color-mix(in srgb,var(--w-accent),transparent 4%),
+0 0 58px color-mix(in srgb,var(--w-accent),transparent 16%),
+0 0 96px color-mix(in srgb,var(--w-accent),transparent 36%);
+}
+}
+.muted{color:var(--w-muted)}
+.bold{font-weight:700}
+.round img,img.round{border-radius:20px}
+.button a,a.button{display:inline-block;background:var(--w-accent);color:#fff!important;text-decoration:none;padding:0.48rem 0.82rem;border-radius:999px;font-weight:600}
+.fade{opacity:0;transform:translateY(16px)}
+.spin{display:inline-block}</style>
+</head>
+<body>
+<main><h1>Hi</h1><div class="w-gap" aria-hidden="true"></div></main>
+
+</body>
+</html>

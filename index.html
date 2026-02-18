@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Weft</title>
-<meta name="description" content="One file markup language for complete pages">
+<meta name="description" content="One-file markup language with polished defaults and a complete spec">
 <style>:root{
   --w-bg:#fff8ef;
   --w-text:#1f232b;
@@ -32,9 +32,11 @@ h4{font-size:1.1rem}
 p{margin:0.65em 0}
 a{color:var(--w-accent)}
 hr{border:0;border-top:1px solid var(--w-line);margin:1.2rem 0}
+pre{margin:0.9rem 0;padding:12px 14px;overflow:auto;border:1px solid var(--w-line);border-radius:12px;background:color-mix(in srgb,var(--w-line),white 50%)}
 figure{margin:0.9rem 0}
 img{max-width:100%;height:auto;display:block;border-radius:12px}
 code{font-family:"Cascadia Code","Consolas",monospace;background:color-mix(in srgb,var(--w-line),white 35%);padding:0.1rem 0.35rem;border-radius:6px}
+pre code{display:block;padding:0;border-radius:0;background:transparent;white-space:pre}
 .w-gap{height:0.8rem}
 .w-card-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:0.8rem 0}
 .w-card{background:var(--w-panel);border:1px solid var(--w-line);border-radius:16px;padding:14px 15px;box-shadow:0 8px 20px rgba(0,0,0,0.08)}
@@ -72,7 +74,21 @@ text-shadow:
 .spin{display:inline-block}</style>
 </head>
 <body>
-<main><h1 class="center glow">Weft</h1><div class="w-gap" aria-hidden="true"></div><p class="center muted">Markdown-level simple. Production-level polish.</p><div class="w-gap" aria-hidden="true"></div><p class="button"><a href="documentation.html" target="_blank" rel="noreferrer noopener">Read the Docs</a></p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><section class="w-card-row"><article class="w-card"><h2 style="color:#1f78c8;">One file</h2><p>A single .weft file is a complete web page.</p><p>No config.</p><p>No imports.</p><p>No CSS files.</p><p>No JS files.</p></article></section><div class="w-gap" aria-hidden="true"></div><section class="w-card-row"><article class="w-card"><h2 style="color:#237e4b;">Readable</h2><p>Write content like Markdown.</p><p>Add visuals with tiny tags.</p><p>Keep focus on words, not syntax.</p></article></section><div class="w-gap" aria-hidden="true"></div><section class="w-card-row"><article class="w-card"><h2 style="color:#6d4cb3;">Deterministic</h2><p>Same input always compiles to the same HTML.</p><p>Reliable for static hosting and version control.</p></article></section><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>What You Write</h2><div class="w-gap" aria-hidden="true"></div><p><code></code>`weft</p><h1 class="center glow">Welcome</h1><div class="w-gap" aria-hidden="true"></div><p class="muted">One file. Looks good. Works everywhere.</p><div class="w-gap" aria-hidden="true"></div><section class="w-card-row"><article class="w-card"><h2 style="color:#1f78c8;">Simple</h2><p>No HTML.</p><p>No CSS.</p><p>No JS files.</p></article></section><div class="w-gap" aria-hidden="true"></div><p class="button"><a href="documentation.html" target="_blank" rel="noreferrer noopener">Get Started</a></p><p><code></code>`</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2 class="center">Core Idea</h2><div class="w-gap" aria-hidden="true"></div><p>Weft is not programmable.</p><p>It is descriptive.</p><div class="w-gap" aria-hidden="true"></div><p>You describe content and intent.</p><p>The compiler handles layout, styling, and optional motion.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>Made for Fast Publishing</h2><div class="w-gap" aria-hidden="true"></div><section class="w-card-row"><article class="w-card"><h2 style="color:#b5621e;">Landing Pages</h2><p>Ship a complete page from a single source file.</p><p>Great for product launches and docs portals.</p></article></section><div class="w-gap" aria-hidden="true"></div><section class="w-card-row"><article class="w-card"><h2 style="color:#0b7b88;">Internal Docs</h2><p>Readable plain text that your whole team can edit.</p><p>No frontend stack required.</p></article></section><div class="w-gap" aria-hidden="true"></div><section class="w-card-row"><article class="w-card"><h2 style="color:#b43f8e;">Personal Sites</h2><p>Publish fast with clean defaults and no setup overhead.</p></article></section><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>Start Here</h2><div class="w-gap" aria-hidden="true"></div><p class="button"><a href="documentation.html" target="_blank" rel="noreferrer noopener">Open Documentation</a></p><div class="w-gap" aria-hidden="true"></div><p class="muted">This site is written in Weft.</p><div class="w-gap" aria-hidden="true"></div></main>
+<main><h1 class="center glow">Weft</h1><div class="w-gap" aria-hidden="true"></div><p class="center muted">One file. Publish fast. Keep content readable.</p><div class="w-gap" aria-hidden="true"></div><p class="button"><a href="documentation.html" target="_blank" rel="noreferrer noopener">Read Documentation</a></p><p class="button"><a href="specification.html" target="_blank" rel="noreferrer noopener">Read Specification</a></p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><section class="w-card-row"><article class="w-card"><h2 style="color:#1f78c8;">Why Weft</h2><p>Write pages as plain text.</p><p>Use tiny tags for style and motion.</p><p>No HTML, CSS, or JS required in author files.</p></article></section><div class="w-gap" aria-hidden="true"></div><section class="w-card-row"><article class="w-card"><h2 style="color:#237e4b;">Reliable Output</h2><p>Compilation is deterministic.</p><p>Same source always produces the same HTML.</p><p>Good for version control and static hosting.</p></article></section><div class="w-gap" aria-hidden="true"></div><section class="w-card-row"><article class="w-card"><h2 style="color:#6d4cb3;">Minimal Surface</h2><p>One .weft file equals one page.</p><p>No imports.</p><p>No config files.</p><p>No layout DSL.</p></article></section><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>Start In 60 Seconds</h2><div class="w-gap" aria-hidden="true"></div><pre><code class="language-weft">@title My First Weft Page
+@desc A complete page from one file
+@theme default
+@accent cyan
+
+# Hello Weft &lt;center&gt; &lt;glow&gt;
+
+This line is calm &lt;muted&gt;
+
+:::
+## Card One &lt;blue&gt;
+Cards are the only layout primitive.
+:::
+
+[Open Docs](documentation.html) &lt;button&gt;</code></pre><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2>Everything You Need</h2><div class="w-gap" aria-hidden="true"></div><section class="w-card-row"><article class="w-card"><h2 style="color:#b5621e;">Practical Docs</h2><p>Step-by-step reference for syntax and rules.</p><p>Includes code spans, fenced blocks, tags, cards, and colors.</p><p class="button"><a href="documentation.html" target="_blank" rel="noreferrer noopener">Open Documentation</a></p></article></section><div class="w-gap" aria-hidden="true"></div><section class="w-card-row"><article class="w-card"><h2 style="color:#0b7b88;">Formal Spec</h2><p>Numbered reference with guarantees, boundaries, and compiler model.</p><p>Useful for implementers and tooling.</p><p class="button"><a href="specification.html" target="_blank" rel="noreferrer noopener">Open Specification</a></p></article></section><div class="w-gap" aria-hidden="true"></div><section class="w-card-row"><article class="w-card"><h2 style="color:#b43f8e;">Playground</h2><p>Live editor and preview for trying examples fast.</p><p>Great for testing syntax while writing docs or pages.</p><p class="button"><a href="playground.html" target="_blank" rel="noreferrer noopener">Open Playground</a></p></article></section><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><h2 class="center">Language Boundaries</h2><div class="w-gap" aria-hidden="true"></div><p>No custom CSS.</p><p>No custom JS.</p><p>No logic or variables.</p><p>No multi-file page composition.</p><div class="w-gap" aria-hidden="true"></div><p>If you need those, use HTML directly.</p><div class="w-gap" aria-hidden="true"></div><hr><div class="w-gap" aria-hidden="true"></div><p class="button"><a href="documentation.html" target="_blank" rel="noreferrer noopener">Documentation</a></p><p class="button"><a href="specification.html" target="_blank" rel="noreferrer noopener">Specification</a></p></main>
 
 </body>
 </html>

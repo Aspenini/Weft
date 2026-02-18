@@ -48,6 +48,7 @@ fn run() -> Result<(), String> {
     }
 
     let input = input.ok_or_else(|| "missing input file".to_string())?;
+    let input = resolve_input_path(&input)?;
     if stdout && out.is_some() {
         return Err("cannot use --stdout with --out".to_string());
     }
@@ -73,6 +74,16 @@ fn default_output_path(input: &Path) -> PathBuf {
     let mut out = input.to_path_buf();
     out.set_extension("html");
     out
+}
+
+fn resolve_input_path(input: &Path) -> Result<PathBuf, String> {
+    if input.is_absolute() {
+        return Ok(input.to_path_buf());
+    }
+
+    let cwd = env::current_dir()
+        .map_err(|err| format!("failed to read current working directory: {err}"))?;
+    Ok(cwd.join(input))
 }
 
 fn print_usage() {
