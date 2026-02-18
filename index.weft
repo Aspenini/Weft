@@ -7,8 +7,8 @@
 
 One file. Publish fast. Keep content readable. <center> <muted>
 
-[Read Documentation](documentation.html) <button>
-[Read Specification](specification.html) <button>
+[Read Documentation](https://weft.aspenini.com/documentation) <button>
+[Read Specification](https://weft.aspenini.com/specification) <button>
 
 ---
 
@@ -53,7 +53,7 @@ This line is calm <muted>
 Cards are the only layout primitive.
 :::
 
-[Open Docs](documentation.html) <button>
+[Open Docs](https://weft.aspenini.com/documentation) <button>
 ```
 
 ---
@@ -64,21 +64,14 @@ Cards are the only layout primitive.
 ## Practical Docs <orange>
 Step-by-step reference for syntax and rules.
 Includes code spans, fenced blocks, tags, cards, and colors.
-[Open Documentation](documentation.html) <button>
+[Open Documentation](https://weft.aspenini.com/documentation) <button>
 :::
 
 :::
 ## Formal Spec <cyan>
 Numbered reference with guarantees, boundaries, and compiler model.
 Useful for implementers and tooling.
-[Open Specification](specification.html) <button>
-:::
-
-:::
-## Playground <pink>
-Live editor and preview for trying examples fast.
-Great for testing syntax while writing docs or pages.
-[Open Playground](playground.html) <button>
+[Open Specification](https://weft.aspenini.com/specification) <button>
 :::
 
 ---
@@ -94,5 +87,5 @@ If you need those, use HTML directly.
 
 ---
 
-[Documentation](documentation.html) <button>
-[Specification](specification.html) <button>
+[Documentation](https://weft.aspenini.com/documentation) <button>
+[Specification](https://weft.aspenini.com/specification) <button>
